@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h3>I'm in the AppComponent!</h3>
+    <br />
+    <app-servers></app-servers>
+    <app-success-alert></app-success-alert>
+    <app-warning-alert></app-warning-alert>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="onClickDetails()">
+  Display Details
+</button>
+<p *ngIf="displayPassword">Secret Password = Tuna</p>
+<p
+  *ngFor="let click of clicks; let i = index"
+  [ngStyle]="i > 4 ? { 'background-color': 'green' } : null"
+  [ngClass]="{ 't-white': i > 4 }"
+>
+  {{ click | date: "dd.MMM.yyyy hh:mm:ss" }}
+</p>

@@ -1,0 +1,34 @@
+<div class="container">
+  <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+  <hr />
+  <div class="row">
+    <div class="col-xs-12">
+      <app-server-element
+        *ngFor="let serverElement of serverElements"
+        [srvElement]="serverElement"
+      >
+       <p #contentParagraph>
+      <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+        serverElement.content
+      }}</strong>
+      <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+    </p>
+    </app-server-element>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control (frameEmitted)="onFrameChanged($event)"></app-game-control>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div *ngFor="let frame of frames">
+        <app-even [frame]="frame" *ngIf="frame%2==0"></app-even>
+        <app-odd [frame]="frame" *ngIf="frame%2==1"></app-odd>
+      </div>
+    </div>
+  </div>
+</div>
